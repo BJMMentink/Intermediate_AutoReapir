@@ -4,21 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BJM.AutoReapir.UI
+namespace BJM.AutoReapir.BL
 {
-    public class Customer
+    public class Person
     {
         public string FirstName { get; set; } = string.Empty;
-
         public string LastName { get; set; } = string.Empty;
-
-        public string PhoneNumber { get; set; } = string.Empty;
-
-        public string FullName 
-        { 
-            get { return FirstName + " " + LastName; } 
+        protected DateTime DOB { get; set; }
+        // methods
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
         }
-        // methods 
         public override string ToString()
         {
             return FullName;
