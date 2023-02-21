@@ -1,4 +1,6 @@
 using BJM.AutoReapir.BL;
+using BJM.AutoRepair.BL;
+
 namespace BJM.AutoReapir.UI
 {
 
@@ -43,13 +45,45 @@ namespace BJM.AutoReapir.UI
                 txtFirstName.Text = selectedCustomer.FirstName;
                 txtLastName.Text = selectedCustomer.LastName;
                 txtPhoneNumber.Text = selectedCustomer.PhoneNumber;
+
+                RebindVehicles(selectedCustomer.Vehicles);
             }
         }
+
+        private void RebindVehicles(List<Vehicle> vehicles)
+        {
+            lstVehicles.DataSource = null;
+            lstVehicles.DataSource = vehicles;
+        }
+
         private void RebindCustomers()
         {
             lstCustomer.DataSource = null; // unbind
             lstCustomer.DataSource = customers; // rebind
         }
 
+        private void btnAddingVehicle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Vehicle vehicle = new Vehicle();
+                vehicle.Make = txtMake.Text;
+                vehicle.Model = txtModel.Text;
+                vehicle.Year = int.Parse(txtYear.Text);
+            }
+            catch (InvalidYearException iye)
+            {
+                MessageBox.Show(iye.Message);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("int only");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error");
+            }
+            
+        }
     }
 }

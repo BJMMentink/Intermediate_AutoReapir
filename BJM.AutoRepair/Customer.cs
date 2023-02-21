@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BJM.AutoRepair.BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace BJM.AutoReapir.BL
     {
         public string PhoneNumber { get; set; } = string.Empty;
 
+        public List<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
         public Customer() 
         {
             FirstName = "Ben";
