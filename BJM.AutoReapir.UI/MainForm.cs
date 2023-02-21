@@ -1,4 +1,6 @@
 using BJM.AutoReapir.BL;
+using BJM.AutoRepair.BL;
+
 namespace BJM.AutoReapir.UI
 {
 
@@ -43,13 +45,23 @@ namespace BJM.AutoReapir.UI
                 txtFirstName.Text = selectedCustomer.FirstName;
                 txtLastName.Text = selectedCustomer.LastName;
                 txtPhoneNumber.Text = selectedCustomer.PhoneNumber;
+
+                RebindVehicles(selectedCustomer.Vehicles);
             }
         }
+
+        private void RebindVehicles(List<Vehicle> vehicles)
+        {
+            lstVehicles.DataSource = null;
+            lstVehicles.DataSource = vehicles;
+        }
+
         private void RebindCustomers()
         {
             lstCustomer.DataSource = null; // unbind
             lstCustomer.DataSource = customers; // rebind
         }
+
 
     }
 }
