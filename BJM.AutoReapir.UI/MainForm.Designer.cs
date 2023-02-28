@@ -219,7 +219,6 @@
             this.btnAddingVehicle.TabIndex = 17;
             this.btnAddingVehicle.Text = "Add Vehicle";
             this.btnAddingVehicle.UseVisualStyleBackColor = true;
-            this.btnAddingVehicle.Click += new System.EventHandler(this.btnAddingVehicle_Click);
             // 
             // MainForm
             // 

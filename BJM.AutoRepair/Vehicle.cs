@@ -9,7 +9,8 @@ namespace BJM.AutoRepair.BL
     public class Vehicle
     {
             private int year;
-
+        
+        
             public string Make { get; set; }
             public string Model { get; set; }
             public int Year
@@ -22,7 +23,7 @@ namespace BJM.AutoRepair.BL
             }
             }
 
-        public Vehicle() { }
+            public Vehicle() { }
             public Vehicle(string make, string model, int year) 
             {
                 Make = make;

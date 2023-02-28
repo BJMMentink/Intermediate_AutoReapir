@@ -62,28 +62,6 @@ namespace BJM.AutoReapir.UI
             lstCustomer.DataSource = customers; // rebind
         }
 
-        private void btnAddingVehicle_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Vehicle vehicle = new Vehicle();
-                vehicle.Make = txtMake.Text;
-                vehicle.Model = txtModel.Text;
-                vehicle.Year = int.Parse(txtYear.Text);
-            }
-            catch (InvalidYearException iye)
-            {
-                MessageBox.Show(iye.Message);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("int only");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error");
-            }
-            
-        }
+
     }
 }
