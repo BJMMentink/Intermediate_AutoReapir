@@ -14,7 +14,7 @@ namespace BJM.AutoReapir.UI
         // fields
         private CustomerCollection customers = new CustomerCollection(); // must be instantiated first to be able to be refrenced 
 
-
+        private DateTime startTime = DateTime.MinValue;
 
         public MainForm()
         {
@@ -22,6 +22,8 @@ namespace BJM.AutoReapir.UI
 
             customers.LoadTestCustomers();
             RebindCustomers();
+            startTime = DateTime.Now;
+ 
         }
 
         private void btnAddingCustomer_Click(object sender, EventArgs e)
@@ -62,6 +64,16 @@ namespace BJM.AutoReapir.UI
             lstCustomer.DataSource = customers; // rebind
         }
 
+        private void tmrTime_Tick(object sender, EventArgs e)
+        {
+            TimeSpan sinceStart = DateTime.Now - startTime;
+            staTime.Text = sinceStart.ToString("hh\\:mm\\:ss");
+            //staTime.Text = DateTime.Now.ToShortTimeString();
+        }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

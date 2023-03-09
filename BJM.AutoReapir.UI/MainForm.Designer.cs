@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAddingCustomer = new System.Windows.Forms.Button();
             this.lstCustomer = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,6 +49,10 @@
             this.btnDeletingVehilcle = new System.Windows.Forms.Button();
             this.btnUpdatingVehicle = new System.Windows.Forms.Button();
             this.btnAddingVehicle = new System.Windows.Forms.Button();
+            this.staMain = new System.Windows.Forms.StatusStrip();
+            this.staTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tmrTime = new System.Windows.Forms.Timer(this.components);
+            this.staMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddingCustomer
@@ -220,11 +225,34 @@
             this.btnAddingVehicle.Text = "Add Vehicle";
             this.btnAddingVehicle.UseVisualStyleBackColor = true;
             // 
+            // staMain
+            // 
+            this.staMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.staTime});
+            this.staMain.Location = new System.Drawing.Point(0, 409);
+            this.staMain.Name = "staMain";
+            this.staMain.Size = new System.Drawing.Size(542, 22);
+            this.staMain.TabIndex = 20;
+            this.staMain.Text = "statusStrip1";
+            // 
+            // staTime
+            // 
+            this.staTime.Name = "staTime";
+            this.staTime.Size = new System.Drawing.Size(118, 17);
+            this.staTime.Text = "toolStripStatusLabel1";
+            // 
+            // tmrTime
+            // 
+            this.tmrTime.Enabled = true;
+            this.tmrTime.Interval = 1000;
+            this.tmrTime.Tick += new System.EventHandler(this.tmrTime_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 431);
+            this.Controls.Add(this.staMain);
             this.Controls.Add(this.btnDeletingVehilcle);
             this.Controls.Add(this.btnUpdatingVehicle);
             this.Controls.Add(this.btnAddingVehicle);
@@ -247,6 +275,9 @@
             this.Controls.Add(this.btnAddingCustomer);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.staMain.ResumeLayout(false);
+            this.staMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,5 +305,8 @@
         private Button btnDeletingVehilcle;
         private Button btnUpdatingVehicle;
         private Button btnAddingVehicle;
+        private StatusStrip staMain;
+        private ToolStripStatusLabel staTime;
+        private System.Windows.Forms.Timer tmrTime;
     }
 }
