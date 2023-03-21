@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BJM.AutoRepair.PL\BJM.AutoRepair.PL.csproj" />
     <ProjectReference Include="..\BJM.AutoRepair\BJM.AutoRepair.BL.csproj" />
   </ItemGroup>
 

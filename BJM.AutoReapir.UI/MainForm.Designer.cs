@@ -52,7 +52,9 @@
             this.staMain = new System.Windows.Forms.StatusStrip();
             this.staTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.tmrTime = new System.Windows.Forms.Timer(this.components);
+            this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.staMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddingCustomer
@@ -229,9 +231,9 @@
             // 
             this.staMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.staTime});
-            this.staMain.Location = new System.Drawing.Point(0, 409);
+            this.staMain.Location = new System.Drawing.Point(0, 430);
             this.staMain.Name = "staMain";
-            this.staMain.Size = new System.Drawing.Size(542, 22);
+            this.staMain.Size = new System.Drawing.Size(856, 22);
             this.staMain.TabIndex = 20;
             this.staMain.Text = "statusStrip1";
             // 
@@ -247,11 +249,21 @@
             this.tmrTime.Interval = 1000;
             this.tmrTime.Tick += new System.EventHandler(this.tmrTime_Tick);
             // 
+            // dgvCustomer
+            // 
+            this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomer.Location = new System.Drawing.Point(523, 46);
+            this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.RowTemplate.Height = 25;
+            this.dgvCustomer.Size = new System.Drawing.Size(292, 351);
+            this.dgvCustomer.TabIndex = 21;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 431);
+            this.ClientSize = new System.Drawing.Size(856, 452);
+            this.Controls.Add(this.dgvCustomer);
             this.Controls.Add(this.staMain);
             this.Controls.Add(this.btnDeletingVehilcle);
             this.Controls.Add(this.btnUpdatingVehicle);
@@ -275,9 +287,11 @@
             this.Controls.Add(this.btnAddingCustomer);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.staMain.ResumeLayout(false);
             this.staMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,5 +322,6 @@
         private StatusStrip staMain;
         private ToolStripStatusLabel staTime;
         private System.Windows.Forms.Timer tmrTime;
+        private DataGridView dgvCustomer;
     }
 }

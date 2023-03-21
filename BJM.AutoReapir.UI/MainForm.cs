@@ -1,5 +1,6 @@
 using BJM.AutoReapir.BL;
 using BJM.AutoRepair.BL;
+using BJM.AutoRepair.PL;
 
 namespace BJM.AutoReapir.UI
 {
@@ -20,10 +21,26 @@ namespace BJM.AutoReapir.UI
         {
             InitializeComponent();
 
-            customers.LoadTestCustomers();
-            RebindCustomers();
+            Type type = typeof(CustomerCollection);
+            try
+            {
+                CustomerCollection? temp = DataAccess.LoadXml(type) as CustomerCollection;
+                customers = (temp != null) ? temp : new CustomerCollection();
+            }
+            catch (Exception)
+            {
+                customers = new CustomerCollection();
+            }
+            if (customers.Count > 0) 
+            {
+                RebindCustomers();
+            }
+
+            
+            
             startTime = DateTime.Now;
- 
+            staTime.Text = "00:00:00";
+
         }
 
         private void btnAddingCustomer_Click(object sender, EventArgs e)
@@ -34,7 +51,7 @@ namespace BJM.AutoReapir.UI
             customer.PhoneNumber = txtPhoneNumber.Text;
 
             customers.Add(customer); // adds the data from the txt boxes to the list field
-
+            
             RebindCustomers();
 
         }
@@ -62,6 +79,11 @@ namespace BJM.AutoReapir.UI
         {
             lstCustomer.DataSource = null; // unbind
             lstCustomer.DataSource = customers; // rebind
+            dgvCustomer.DataSource = null;
+            dgvCustomer.DataSource = customers;
+            dgvCustomer.Columns["FullName"].Visible = false;
+            dgvCustomer.Columns["PhoneNumber"].HeaderText = "Phone Number";
+            
         }
 
         private void tmrTime_Tick(object sender, EventArgs e)
@@ -74,6 +96,11 @@ namespace BJM.AutoReapir.UI
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            customers.SaveToXml();
         }
     }
 }
